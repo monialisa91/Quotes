@@ -5,7 +5,6 @@ var quoteUrl = "https://quotesondesign.com/wp-json/posts?filter[orderby]=rand&fi
 
 function getQuote() {
 	$.getJSON(prefix + quoteUrl, createTweet);
-	$.ajaxSetup({ cache: false });
 }
 
 function createTweet(input) {
@@ -31,9 +30,8 @@ function createTweet(input) {
 }
 
 $(document).ready(function() {
+	$.ajaxSetup({ cache: false });
 	getQuote();
-	$('.trigger').click(function() {
-	getQuote();
-	})
+	$('.trigger').click(getQuote);
 });
 
